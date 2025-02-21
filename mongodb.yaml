@@ -1,6 +1,14 @@
-version: "3.8"
-
 services:
+  app:
+    build: .
+    container_name: node-app
+    ports:
+      - "3000:3000"
+    environment:
+      MONGO_URI: "mongodb://admin:qwerty@mongo:27017/"
+    depends_on:
+      - mongo
+
   mongo:
     image: mongo
     container_name: mongodb
